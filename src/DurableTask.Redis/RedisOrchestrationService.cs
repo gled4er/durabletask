@@ -24,6 +24,17 @@ namespace DurableTask.Redis
         IOrchestrationServiceClient,
         IDisposable
     {
+        public int TaskActivityDispatcherCount { get; }
+
+        public int MaxConcurrentTaskActivityWorkItems { get; }
+
+        public int TaskOrchestrationDispatcherCount { get; }
+
+        public int MaxConcurrentTaskOrchestrationWorkItems { get; }
+
+        public BehaviorOnContinueAsNew EventBehaviourForContinueAsNew { get; }
+
+
         public Task StartAsync()
         {
             throw new NotImplementedException();
@@ -79,12 +90,6 @@ namespace DurableTask.Redis
             throw new NotImplementedException();
         }
 
-        public int TaskOrchestrationDispatcherCount { get; }
-
-        public int MaxConcurrentTaskOrchestrationWorkItems { get; }
-
-        public BehaviorOnContinueAsNew EventBehaviourForContinueAsNew { get; }
-
         public Task<TaskOrchestrationWorkItem> LockNextTaskOrchestrationWorkItemAsync(TimeSpan receiveTimeout, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
@@ -109,10 +114,6 @@ namespace DurableTask.Redis
         {
             throw new NotImplementedException();
         }
-
-        public int TaskActivityDispatcherCount { get; }
-
-        public int MaxConcurrentTaskActivityWorkItems { get; }
 
         public Task<TaskActivityWorkItem> LockNextTaskActivityWorkItem(TimeSpan receiveTimeout, CancellationToken cancellationToken)
         {
